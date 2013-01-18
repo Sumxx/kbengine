@@ -70,8 +70,8 @@ baseapp部署的数量可自由配置。
 
 
 · cellapp:
-一个cellapp负责处理一个(尽量)或者多个cell，每个cell处理一个space的部分或者整个space，当一个space上消耗过大时kbe将会
-寻找空闲的cellapp来均衡负载， 整个游戏的实时处理逻辑部分也在cellapp，包括aoi, 逻辑层的ai, entity移动导航等等。 
+一个cellapp负责处理一个(尽量)或者多个space，每个space包含一个cell, cell可以维护整个space区域或者部分区域，当一个space上消耗过大时
+cellappmgr将会寻找空闲的cellapp来均衡负载， 整个游戏的实时处理逻辑部分也在cellapp，包括aoi, 逻辑层的ai, entity移动导航等等。 
 cellapp部署的数量可自由配置。
 
 · loginapp:
@@ -135,7 +135,7 @@ export KBE_HYBRID_PATH=$KBE_ROOT/kbe/bin/Hybrid64/
 
 <p>KBE_RES_PATH:</p>
 
-<pre><code>相关资源路径用':'或者';'分隔, 第一个res必须是kbe系统res, 第二个res必须是用户脚本res， 其他无限制。
+<pre><code>相关资源路径用':'或者';'分隔, 第一个res必须是kbe引擎的res, 第二个res必须是用户脚本根目录， 其他无限制。
 </code></pre>
 
 <p>KBE_HYBRID_PATH:</p>
@@ -165,7 +165,7 @@ KBE_ROOT\kbengine\kbe\src\kbengine_vs90.sln
 
 <p>注意: </p>
 
-<pre><code>1: 如使用其他版本编译器最好将python、log4cxx(kbe\src\libs\*.a)也重新编译。
+<pre><code>1: 如使用其他版本编译器最好将python、openssl、log4cxx(kbe\src\libs\*.a)也重新编译。
 
 2: 某些平台上的mysql路径可能不是/usr/lib64/mysql/mysql_config
 
@@ -181,7 +181,7 @@ make
 
 make install
 
-再启动服务器
+再启动服务端。
 </code></pre>
 
 <h2>配置数据库:</h2>
@@ -202,7 +202,7 @@ make install
 4: 在res\server\kbengine_defs.xml的dbmgr节修改databaseName参数(推荐在demo\res\server\kbengine.xml进行重载修改)。
 </code></pre>
 
-<h2>启动服务器:</h2>
+<h2>启动服务端:</h2>
 
 <p>linux:</p>
 
@@ -221,7 +221,7 @@ sh kill.sh
 
 ~.bat
 
-或者使用tools\server\guiconsole\guiconsole.exe来启动和关闭服务器。
+或者使用tools\server\guiconsole\guiconsole.exe来启动和关闭服务端。
 </code></pre>
 
 <h2>日志:</h2>
